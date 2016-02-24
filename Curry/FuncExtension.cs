@@ -21,5 +21,9 @@ namespace Functional
         {
             return x => func(arg, x);
         }
+        public static Func<T2,T3, TRet> Partial<T, T2, T3, TRet>(this Func<T, T2, T3, TRet> func, T arg)
+        {
+            return (x,y) => func(arg, x,y);
+        }
     }
 }
