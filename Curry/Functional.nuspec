@@ -10,7 +10,7 @@
     <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
     <projectUrl>https://github.com/jarlrasm/curry</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
+    <description>Some functional structures for c#</description>
     <copyright>Copyright 2016</copyright>
   </metadata>
 </package>
