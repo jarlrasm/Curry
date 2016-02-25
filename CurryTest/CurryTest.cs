@@ -77,5 +77,36 @@ namespace CurryTest
             Assert.AreEqual(8, add5(3));
 
         }
+        [Test]
+        public void EitherStringOrIntMatchLeftMatchesString()
+        {
+            Either<string, int> either = "yo";
+            var result = either.Match(s => s, i => i.ToString());
+            Assert.AreEqual("yo",result);
+            Assert.IsTrue(either.Equals("yo"));
+            Assert.IsTrue(either=="yo");
+            Assert.IsTrue(either.Left == "yo");
+            Assert.IsTrue(either.Right.Equals(Functional.Has.Nothing));
+            Assert.IsTrue(either.Right == Functional.Has.Nothing); ;
+            Assert.AreEqual(either.Right, Functional.Has.Nothing);
+            Assert.AreEqual(either.Left, "yo");
+            Assert.AreEqual(either, "yo");
+        }
+        [Test]
+        public void EitherStringOrIntMatchRightMatchesInt()
+        {
+            Either<string, int> either = 13;
+            var result = either.Match(s => s, i => i.ToString());
+            Assert.AreEqual("13", result);
+            Assert.IsTrue(either.Equals(13));
+            Assert.IsTrue(either == 13);
+            Assert.IsTrue(either.Right.Equals(13));
+            Assert.IsTrue(either.Right==13);
+            Assert.IsTrue(either.Left.Equals(Functional.Has.Nothing));
+            Assert.IsTrue(either.Left == Functional.Has.Nothing);
+            Assert.AreEqual(either.Left, Functional.Has.Nothing);
+            Assert.AreEqual(either.Right, 13);
+            Assert.AreEqual(either, 13);
+        }
     }
 }

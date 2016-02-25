@@ -40,7 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Either.cs" />
     <Compile Include="FuncExtension.cs" />
+    <Compile Include="Has.cs" />
+    <Compile Include="Maybe.cs" />
+    <Compile Include="MaybeExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
