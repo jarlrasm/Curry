@@ -108,5 +108,33 @@ namespace CurryTest
             Assert.AreEqual(either.Right, 13);
             Assert.AreEqual(either, 13);
         }
+        [Test]
+        public void MaybeWithValueHasValue()
+        {
+            Maybe<string> wtf = "wtf";
+            Assert.AreEqual(wtf, "wtf");
+            Assert.AreNotEqual(wtf, "ftw");
+            Assert.AreNotEqual(wtf, Functional.Has.Nothing);
+        }
+        [Test]
+        public void MaybeWithoutValueHasNothing()
+        {
+            Maybe<string> wtf = Functional.Has.Nothing;
+            Assert.AreNotEqual(wtf, "wtf");
+            Assert.AreNotEqual(wtf, "ftw");
+            Assert.AreEqual(wtf, Functional.Has.Nothing);
+        }
+        [Test]
+        public void MaybeWithValueIfSucceeds()
+        {
+            Maybe<string> wtf = "wtf";
+            Assert.IsTrue(wtf.If(x =>x == "wtf", () => false));
+        }
+        [Test]
+        public void MaybeWithoutValueIfElses()
+        {
+            Maybe<string> wtf = Functional.Has.Nothing;
+            Assert.IsTrue(wtf.If(x => false, () => true));
+        }
     }
 }
