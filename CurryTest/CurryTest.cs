@@ -117,9 +117,25 @@ namespace CurryTest
             Assert.AreNotEqual(wtf, Functional.Has.Nothing);
         }
         [Test]
+        public void NewedupMaybeWithoutArgumentsHasNothing()
+        {
+            Maybe<string> wtf = new Maybe<string>();
+            Assert.AreNotEqual(wtf, "wtf");
+            Assert.AreEqual(wtf, Functional.Has.Nothing);
+        }
+        [Test]
         public void MaybeWithoutValueHasNothing()
         {
             Maybe<string> wtf = Functional.Has.Nothing;
+            Assert.AreNotEqual(wtf, "wtf");
+            Assert.AreNotEqual(wtf, "ftw");
+            Assert.AreEqual(wtf, Functional.Has.Nothing);
+        }
+        [Test]
+        public void MaybeWithNullValueHasNothing()
+        {
+            string nullstring = null;
+            Maybe<string> wtf = nullstring;
             Assert.AreNotEqual(wtf, "wtf");
             Assert.AreNotEqual(wtf, "ftw");
             Assert.AreEqual(wtf, Functional.Has.Nothing);

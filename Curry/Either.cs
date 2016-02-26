@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Functional
 {
-    public class Either<TL,TR> 
+    public struct Either<TL,TR> 
     {
         private readonly TR right;
         private readonly TL left;
@@ -21,6 +21,7 @@ namespace Functional
         public Either(TL left)
         {
             this.left = left;
+            this.right = default(TR);
             isRight = false;
         }
 
@@ -28,6 +29,7 @@ namespace Functional
         public Either(TR right)
         {
             this.right = right;
+            this.left = default(TL);
             isRight = true;
         }
 
@@ -42,8 +44,8 @@ namespace Functional
         public override bool Equals(object obj)
         {
             if (obj is TR)
-                return isRight && this.right.Equals(obj);
-            return  !isRight && this.left.Equals(obj);
+                return isRight && this.right!=null? this.right.Equals(obj):false;
+            return  !isRight && this.left != null ? this.left.Equals(obj) : false;
         }
 
 

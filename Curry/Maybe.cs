@@ -1,21 +1,24 @@
 namespace Functional
 {
-    public class Maybe<T>
+    public struct Maybe<T>
     {
-        private readonly Either<T,Has> value;
+        private readonly Either<Has, T> value;
 
 
-        public Maybe()
+        public Maybe(Has nothing)
         {
-            this.value = Has.Nothing;
+            this.value = nothing;
         }
         public Maybe(T value)
         {
-            this.value = value;
+            if (value == null)
+                this.value = Has.Nothing;
+            else
+                this.value = value;
         }
 
 
-        public Either<T, Has> Value
+        public Either<Has, T> Value
         {
             get { return this.value; }
         }
@@ -48,7 +51,7 @@ namespace Functional
         }
         public static implicit operator Maybe<T>(Has nothing)
         {
-            return new Maybe<T>();
+            return new Maybe<T>(nothing);
         }
     }
 }
